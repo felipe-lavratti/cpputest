@@ -226,7 +226,7 @@ char* cpputest_strdup_location(const char * str, const char* file, int line)
 
 char* cpputest_strndup_location(const char * str, size_t n, const char* file, int line)
 {
-    size_t length = strlen(str);
+    size_t length = my_strlen(str);
     length = length < n ? length : n;
     length = length + 1;
     return strdup_alloc(str, length, file, line);
