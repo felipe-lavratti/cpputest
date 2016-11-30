@@ -202,7 +202,7 @@ void* cpputest_malloc_location(size_t size, const char* file, int line)
     return cpputest_malloc_location_with_leak_detection(size, file, line);
 }
 
-static size_t strlen(const char * str)
+static size_t my_strlen(const char * str)
 {
     size_t n = 0;
     while (*str++) n++;
@@ -220,7 +220,7 @@ static char* strdup_alloc(const char * str, size_t size, const char* file, int l
 
 char* cpputest_strdup_location(const char * str, const char* file, int line)
 {
-    size_t length = 1 + strlen(str);
+    size_t length = 1 + my_strlen(str);
     return strdup_alloc(str, length, file, line);
 }
 

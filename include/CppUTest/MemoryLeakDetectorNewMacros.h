@@ -28,9 +28,19 @@
 #ifndef CPPUTEST_USE_NEW_MACROS
 
     #if CPPUTEST_USE_STD_CPP_LIB
+        #if CPPUTEST_USE_STRDUP_MACROS
+            #undef strdup
+            #undef strndup
+            #undef CPPUTEST_USE_STRDUP_MACROS
+            #define __CPPUTEST_REINCLUDE_MALLOC_MEMORY_LEAK_DETECTOR
+        #endif
         #include <new>
         #include <memory>
         #include <string>
+        #include <string.h>
+        #ifdef __CPPUTEST_REINCLUDE_MALLOC_MEMORY_LEAK_DETECTOR
+            #include "MemoryLeakDetectorMallocMacros.h"
+        #endif
     #endif
 
     void* operator new(size_t size, const char* file, int line) UT_THROW (std::bad_alloc);
