@@ -37,7 +37,6 @@
         #include <new>
         #include <memory>
         #include <string>
-        #include <string.h>
         #ifdef __CPPUTEST_REINCLUDE_MALLOC_MEMORY_LEAK_DETECTOR
             #include "MemoryLeakDetectorMallocMacros.h"
         #endif
