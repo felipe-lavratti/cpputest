@@ -30,6 +30,12 @@ matrix:
       env: BUILD=cmake_coverage
     - compiler: gcc
       env: BUILD=test_report
+    - os: osx
+      compiler: gcc
+      env: BUILD=autotools_gtest
+    - os: osx
+      compiler: clang
+      env: BUILD=cmake_gtest
     - compiler: wcl
       env: BUILD=make_dos
       addons:
@@ -37,9 +43,7 @@ matrix:
           packages:
           - dosbox
 global:
-- os:
-  - linux
-  - osx
+- os: linux
 - rvm: '1.9.3'
 - secure: |-
     P05xUfJVw5YM4hF7hzQLjyMzDD4Q1/fyWP9Uk5aK5VrSWNY99EuxldXI5QK/
