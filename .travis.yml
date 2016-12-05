@@ -30,12 +30,44 @@ matrix:
       env: BUILD=cmake_coverage
     - compiler: gcc
       env: BUILD=test_report
-    - os: osx
-      compiler: gcc
+    - compiler: clang
+      os: osx
+      env: BUILD=autotools
+      addons:
+        apt:
+          packages:
+          - valgrind
+    - compiler: clang
+      os: osx
+      env: BUILD=cmake
+    - compiler: clang
+      os: osx
       env: BUILD=autotools_gtest
-    - os: osx
-      compiler: clang
+    - compiler: clang
+      os: osx
       env: BUILD=cmake_gtest
+    - compiler: gcc
+      os: osx
+      env: BUILD=autotools
+      addons:
+        apt:
+          packages:
+          - valgrind
+    - compiler: gcc
+      os: osx
+      env: BUILD=cmake
+    - compiler: gcc
+      os: osx
+      env: BUILD=autotools_gtest
+    - compiler: gcc
+      os: osx
+      env: BUILD=cmake_gtest
+    - compiler: gcc
+      os: osx
+      env: BUILD=cmake_coverage
+    - compiler: gcc
+      os: osx
+      env: BUILD=test_report
     - compiler: wcl
       env: BUILD=make_dos
       addons:
