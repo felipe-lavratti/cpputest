@@ -90,3 +90,7 @@ before_script:
 - mkdir -p $CPPUTEST_BUILD_DIR && cd $CPPUTEST_BUILD_DIR
 script:
 - "../scripts/travis_ci_build.sh"
+after_failure:
+- "../scripts/travis_ci_after.sh"
+after_success:
+- "../scripts/travis_ci_after.sh"
