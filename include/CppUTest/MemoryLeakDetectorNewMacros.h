@@ -28,8 +28,8 @@
 #ifndef CPPUTEST_USE_NEW_MACROS
 
     #if CPPUTEST_USE_STD_CPP_LIB
-        #ifdef CPPUTEST_HAVE_STRDUP
-            #if CPPUTEST_USE_STRDUP_MACROS
+        #ifdef CPPUTEST_USE_STRDUP_MACROS
+            #if CPPUTEST_USE_STRDUP_MACROS == 1
             /*
              * Some platforms (OSx, i.e.) will get <string.h> or <cstring> included when using <memory> header,
              *  in order to avoid conflicts with strdup and strndup macros defined by MemoryLeakDetectorMallocMacros.h
