@@ -28,18 +28,20 @@
 #ifndef CPPUTEST_USE_NEW_MACROS
 
     #if CPPUTEST_USE_STD_CPP_LIB
-        #if CPPUTEST_USE_STRDUP_MACROS
-        /*
-         * Some platforms (OSx, i.e.) will get <string.h> or <cstring> included when using <memory> header,
-         *  in order to avoid conflicts with strdup and strndup macros defined by MemoryLeakDetectorMallocMacros.h
-         *  we will undefined those macros, include the C++ headers and then reinclude MemoryLeakDetectorMallocMacros.h.
-         * The check `#if CPPUTEST_USE_STRDUP_MACROS` will ensure we only include MemoryLeakDetectorMallocMacros.h if
-         *  it has already been includeded earlier.
-         */
-            #undef strdup
-            #undef strndup
-            #undef CPPUTEST_USE_STRDUP_MACROS
-            #define __CPPUTEST_REINCLUDE_MALLOC_MEMORY_LEAK_DETECTOR
+        #ifdef CPPUTEST_HAVE_STRDUP
+            #if CPPUTEST_USE_STRDUP_MACROS
+            /*
+             * Some platforms (OSx, i.e.) will get <string.h> or <cstring> included when using <memory> header,
+             *  in order to avoid conflicts with strdup and strndup macros defined by MemoryLeakDetectorMallocMacros.h
+             *  we will undefined those macros, include the C++ headers and then reinclude MemoryLeakDetectorMallocMacros.h.
+             * The check `#if CPPUTEST_USE_STRDUP_MACROS` will ensure we only include MemoryLeakDetectorMallocMacros.h if
+             *  it has already been includeded earlier.
+             */
+                #undef strdup
+                #undef strndup
+                #undef CPPUTEST_USE_STRDUP_MACROS
+                #define __CPPUTEST_REINCLUDE_MALLOC_MEMORY_LEAK_DETECTOR
+            #endif
         #endif
         #include <new>
         #include <memory>
