@@ -30,6 +30,12 @@ matrix:
       env: BUILD=cmake_coverage
     - compiler: gcc
       env: BUILD=test_report
+    - os: osx
+      compiler: gcc
+      env: BUILD=autotools_gtest
+    - os: osx
+      compiler: clang
+      env: BUILD=cmake_gtest
     - compiler: wcl
       env: BUILD=make_dos
       addons:
