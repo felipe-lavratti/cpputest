@@ -39,10 +39,12 @@ extern void crash_on_allocation_number(unsigned number);
 #define free(a) cpputest_free_location(a, __FILE__, __LINE__)
 
 #define CPPUTEST_USE_MALLOC_MACROS 1
-#endif
+#endif // CPPUTEST_USE_MALLOC_MACROS
 
-
+/* This prevents strdup macros to get defined, unless it has been enabled by the user or generated config */
 #ifdef CPPUTEST_HAVE_STRDUP
+
+/* This prevents the declaration from done twice and makes sure the file only #defines strdup, so it can be included anywhere */
 #ifndef CPPUTEST_USE_STRDUP_MACROS
 
 #ifdef __cplusplus
@@ -61,7 +63,6 @@ extern char* cpputest_strndup_location(const char* str, size_t n, const char* fi
 #define strndup(str, n) cpputest_strndup_location(str, n, __FILE__, __LINE__)
 
 #define CPPUTEST_USE_STRDUP_MACROS 1
-#endif
-#endif
-
-#endif
+#endif // CPPUTEST_USE_STRDUP_MACROS
+#endif // CPPUTEST_HAVE_STRDUP
+#endif // CPPUTEST_USE_MEM_LEAK_DETECTION
