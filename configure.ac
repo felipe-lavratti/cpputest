@@ -14,6 +14,7 @@ AC_CANONICAL_HOST
 
 default_use_std_cpp=yes
 
+
 case "x$build_os" in
 	*darwin*)
 		AC_SUBST([CPPUTEST_ON_MACOSX], [yes])
@@ -22,6 +23,8 @@ case "x$build_os" in
 		default_use_std_cpp=no
 		;;
 esac
+
+AM_CONDITIONAL([MACOSX], [test x$CPPUTEST_ON_MACOSX = xyes])
 
 AC_PROG_CC
 AC_PROG_CPP

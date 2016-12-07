@@ -3,8 +3,6 @@ set(CppUTestExtTests_src
     CodeMemoryReporterTest.cpp
     GMockTest.cpp
     GTest1Test.cpp
-    IEEE754PluginTest.cpp
-    IEEE754PluginTest_c.c
     MemoryReportAllocatorTest.cpp
     MemoryReporterPluginTest.cpp
     MemoryReportFormatterTest.cpp
@@ -27,6 +25,14 @@ set(CppUTestExtTests_src
     MockReturnValueTest.cpp
     OrderedTestTest.cpp
 )
+
+
+# Mac OS X doesn't support IEEE754
+IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+   list(APPEND CppUTestExtTests_src IEEE754PluginTest.cpp
+                                    IEEE754PluginTest_c.c
+       )
+ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 if (MINGW)
     find_package (Threads REQUIRED)
