@@ -29,10 +29,7 @@
 #include "CppUTest/TestPlugin.h"
 #include "CppUTest/TestRegistry.h"
 #include "CppUTestExt/MockSupportPlugin.h"
-
-#ifdef CPPUTEST_HAVE_FENV
 #include "CppUTestExt/IEEE754ExceptionsPlugin.h"
-#endif
 
 class MyDummyComparator : public MockNamedValueComparator
 {
@@ -52,15 +49,11 @@ int main(int ac, char** av)
 {
     MyDummyComparator dummyComparator;
     MockSupportPlugin mockPlugin;
-#ifdef CPPUTEST_HAVE_FENV
     IEEE754ExceptionsPlugin ieee754Plugin;
-#endif
 
     mockPlugin.installComparator("MyDummyType", dummyComparator);
     TestRegistry::getCurrentRegistry()->installPlugin(&mockPlugin);
-#ifdef CPPUTEST_HAVE_FENV
     TestRegistry::getCurrentRegistry()->installPlugin(&ieee754Plugin);
-#endif
     return CommandLineTestRunner::RunAllTests(ac, av);
 }
 

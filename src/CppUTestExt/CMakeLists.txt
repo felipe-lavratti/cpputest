@@ -1,5 +1,6 @@
 set(CppUTestExt_src
         CodeMemoryReportFormatter.cpp
+        IEEE754ExceptionsPlugin.cpp
         MemoryReporterPlugin.cpp
         MockFailure.cpp
         MockSupportPlugin.cpp
@@ -16,6 +17,7 @@ set(CppUTestExt_src
 
 set(CppUTestExt_headers
         ${CppUTestRootDirectory}/include/CppUTestExt/CodeMemoryReportFormatter.h
+        ${CppUTestRootDirectory}/include/CppUTestExt/IEEE754ExceptionsPlugin.h
         ${CppUTestRootDirectory}/include/CppUTestExt/MemoryReportAllocator.h
         ${CppUTestRootDirectory}/include/CppUTestExt/MockExpectedCall.h
         ${CppUTestRootDirectory}/include/CppUTestExt/MockCheckedExpectedCall.h
@@ -35,12 +37,6 @@ set(CppUTestExt_headers
         ${CppUTestRootDirectory}/include/CppUTestExt/MockNamedValue.h
         ${CppUTestRootDirectory}/include/CppUTestExt/MockSupport.h
 )
-
-# Mac OS X doesn't support IEEE754
-IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-   list(APPEND CppUTestExt_src IEEE754ExceptionsPlugin.cpp)
-   list(APPEND CppUTestExt_headers ${CppUTestRootDirectory}/include/CppUTestExt/IEEE754ExceptionsPlugin.h)
-ENDIF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 add_library(CppUTestExt STATIC ${CppUTestExt_src} ${CppUTestExt_headers})
 target_link_libraries(CppUTestExt ${CPPUNIT_EXTERNAL_LIBRARIES})
