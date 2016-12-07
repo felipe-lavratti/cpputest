@@ -90,6 +90,7 @@ lib_libCppUTestExt_a_CXXFLAGS = $(lib_libCppUTest_a_CXXFLAGS)
 
 lib_libCppUTestExt_a_SOURCES = \
    src/CppUTestExt/CodeMemoryReportFormatter.cpp \
+   src/CppUTestExt/IEEE754ExceptionsPlugin.cpp \
    src/CppUTestExt/MemoryReportAllocator.cpp \
    src/CppUTestExt/MemoryReporterPlugin.cpp \
    src/CppUTestExt/MemoryReportFormatter.cpp \
@@ -103,10 +104,6 @@ lib_libCppUTestExt_a_SOURCES = \
    src/CppUTestExt/MockSupport_c.cpp \
    src/CppUTestExt/OrderedTest.cpp
 	
-if !MACOSX
-lib_libCppUTestExt_a_SOURCES += \
-		src/CppUTestExt/IEEE754ExceptionsPlugin.cpp
-endif   
 
 if INCLUDE_CPPUTEST_EXT
 include_cpputestextdir = $(includedir)/CppUTestExt
@@ -115,6 +112,7 @@ include_cpputestext_HEADERS = \
 	include/CppUTestExt/GMock.h \
 	include/CppUTestExt/GTest.h \
 	include/CppUTestExt/GTestConvertor.h \
+	include/CppUTestExt/IEEE754ExceptionsPlugin.h \
 	include/CppUTestExt/MemoryReportAllocator.h \
 	include/CppUTestExt/MemoryReporterPlugin.h \
 	include/CppUTestExt/MemoryReportFormatter.h \
@@ -131,11 +129,6 @@ include_cpputestext_HEADERS = \
 	include/CppUTestExt/OrderedTest.h
 	
 	
-if !MACOSX
-include_cpputestext_HEADERS += \
-	include/CppUTestExt/IEEE754ExceptionsPlugin.h
-endif
-
 endif
 
 CppUTestTests_CPPFLAGS = $(lib_libCppUTest_a_CPPFLAGS)
@@ -190,6 +183,8 @@ CppUTestExtTests_SOURCES = \
 	tests/CppUTestExt/GMockTest.cpp \
 	tests/CppUTestExt/GTest1Test.cpp \
 	tests/CppUTestExt/GTest2ConvertorTest.cpp \
+	tests/CppUTestExt/IEEE754PluginTest.cpp \
+	tests/CppUTestExt/IEEE754PluginTest_c.c \
 	tests/CppUTestExt/MemoryReportAllocatorTest.cpp \
 	tests/CppUTestExt/MemoryReporterPluginTest.cpp \
 	tests/CppUTestExt/MemoryReportFormatterTest.cpp \
@@ -212,11 +207,6 @@ CppUTestExtTests_SOURCES = \
 	tests/CppUTestExt/MockReturnValueTest.cpp \
 	tests/CppUTestExt/OrderedTestTest.cpp
 
-if !MACOSX
-CppUTestExtTests_SOURCES += \
-		tests/CppUTestExt/IEEE754PluginTest.cpp \
-		tests/CppUTestExt/IEEE754PluginTest_c.c
-endif
 
 DISTCLEANFILES = \
 	filename.map.txt \

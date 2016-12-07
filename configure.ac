@@ -24,8 +24,6 @@ case "x$build_os" in
 		;;
 esac
 
-AM_CONDITIONAL([MACOSX], [test x$CPPUTEST_ON_MACOSX = xyes])
-
 AC_PROG_CC
 AC_PROG_CPP
 AC_PROG_CXX

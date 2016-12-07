@@ -31,7 +31,7 @@
 #include "CppUTest/TestTestingFixture.h"
 #include "CppUTestExt/IEEE754ExceptionsPlugin.h"
 
-#if CPPUTEST_FENV_IS_WORKING_PROPERLY
+#if CPPUTEST_FENV_IS_WORKING_PROPERLY && defined(CPPUTEST_HAVE_FENV)
 
 extern "C"
 {
